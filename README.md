@@ -19,39 +19,37 @@ Our Python-based website, designed with Flask technology, offers real-time visit
 - Docker Compose
 - Additional libraries specified in `requirements.txt`
 
-### Steps to Setup and Run the Application
+## Steps to Setup and Run the Application
 
-1. **Clone the Repository:
-   ```
-   ** Use `git clone <https://github.com/Saadovich/Web-CountVistors`> to clone the repository.
-   ```
-3. **Access Project Directory:
-   ```
-   ** Navigate to the project directory using `cd Web-CountVistors`.
-   ```
-4. **Understand the Application's Code:
-   ```
-   ** The main application is a Python Flask app (`app.py`) that interacts with a Redis instance to count hits. The `Dockerfile` sets up the Python environment and installs dependencies from `requirements.txt`.
-   ```
-6. **Checking the `requirements.txt` File:
-   ```
-   ** This file lists the necessary Python packages, including Flask and Redis.
-   ```
+1. **Clone the Repository and Access the Project Directory:**
+```
+git clone https://github.com/Saadovich/Web-CountVistors && cd Web-CountVistors
+```
+2. **Understand the Application's Components:**
+- The `app.py` is a Python Flask application that counts visitor hits with Redis.
+- The `Dockerfile` prepares the Python environment and installs dependencies listed in `requirements.txt`.
+- The `docker-compose.yml` orchestrates the setup of the Flask application and Redis service.
 
-8. **Launch the Containers:
-   ```
-   ** Use Docker Compose to build and start the containers with `docker-compose up --build`. This command pulls the necessary images, builds the application image, and starts the containers.
-   ```
-10. **Access the Application:
-    ** Once the containers are running, access the Flask application at `http://localhost:9000/` or `http://3.145.55.53:9000/` where you'll see a message indicating the number of times the page has been viewed.
+3. **Check the `requirements.txt` File:**
+This file should list Flask and Redis, ensuring these Python packages are installed within the Docker environment.
+
+4. **Launch the Containers:**
+Use Docker Compose to build and start the application and Redis containers:
+```
+docker-compose up --build -d 
+```
+This command will pull the necessary Docker images, build the application's Docker image, and start both the application and Redis containers as defined in `docker-compose.yml`.
+
+5. **Access the Application:**
+Once the containers are up, the Flask application will be accessible at:
+- Local: [http://localhost:9000/](http://localhost:9000/)
+- External: [http://3.145.55.53:9000/](http://3.145.55.53:9000/)
+
+You will see a message indicating the number of times the page has been viewed.
 
 ### Troubleshooting
 
 If you encounter issues with the connection between the Flask application and Redis, ensure the services are correctly defined and linked in your `docker-compose.yml`. The Redis host in your Flask application should be set to the service name defined for Redis in the Docker Compose file.
-
-### Running the Application
-
-Start the web server with `docker-compose up -d` and visit `http://localhost:9000/` or `http://3.145.55.53:9000/` in your browser.
 
 ## How It Works
 
@@ -66,9 +64,8 @@ We welcome contributions! For guidelines on submitting pull requests and reporti
 Refer to the LICENSE file for details on the license type.
 
 ## Contact
-
-For inquiries, please use the GitHub issue tracker or contact [A.saadovich@hotmail.com].
+Should you have any questions or wish to report an issue, please do not hesitate to use the GitHub issue tracker or contact us directly at [A.saadovich@hotmail.com].
 
 ## Acknowledgements
-
+We extend our gratitude to all the resources, tutorials, and contributors that have made this project possible.
 - [Resources, tutorials, contributors]
