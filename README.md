@@ -22,16 +22,27 @@ Our Python-based website, designed with Flask technology, offers real-time visit
 ### Steps to Setup and Run the Application
 
 1. **Clone the Repository:
+   ```
    ** Use `git clone <https://github.com/Saadovich/Web-CountVistors`> to clone the repository.
-2. **Access Project Directory:
+   ```
+3. **Access Project Directory:
+   ```
    ** Navigate to the project directory using `cd Web-CountVistors`.
-3. **Understand the Application's Code:
+   ```
+4. **Understand the Application's Code:
+   ```
    ** The main application is a Python Flask app (`app.py`) that interacts with a Redis instance to count hits. The `Dockerfile` sets up the Python environment and installs dependencies from `requirements.txt`.
-4. **Checking the `requirements.txt` File:
+   ```
+6. **Checking the `requirements.txt` File:
+   ```
    ** This file lists the necessary Python packages, including Flask and Redis.
-5. **Launch the Containers:
-    ** Use Docker Compose to build and start the containers with `docker-compose up --build`. This command pulls the necessary images, builds the application image, and starts the containers.
-6. **Access the Application:
+   ```
+
+8. **Launch the Containers:
+   ```
+   ** Use Docker Compose to build and start the containers with `docker-compose up --build`. This command pulls the necessary images, builds the application image, and starts the containers.
+   ```
+10. **Access the Application:
     ** Once the containers are running, access the Flask application at `http://localhost:9000/` or `http://3.145.55.53:9000/` where you'll see a message indicating the number of times the page has been viewed.
 
 ### Troubleshooting
