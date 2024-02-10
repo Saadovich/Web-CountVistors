@@ -1,0 +1,45 @@
+---
+- name: Install Docker, Docker Compose, Git, and Deploy Web-CountVisitors
+  hosts: all
+  become: true
+
+  tasks:
+    - name: Install required packages
+      yum:
+        name:
+          - docker
+          - git
+        state: present
+
+    - name: Enable and start Docker service
+      systemd:
+        name: docker
+        enabled: yes
+        state: started
+
+    - name: Add user to the docker group
+      user:
+        name: "{{ ansible_user }}"
+        groups: docker
+        append: yes
+
+    - name: Install Docker Compose
+      get_url:
+        url: "https://github.com/docker/compose/releases/latest/download/docker-compose-Linux-x86_64"
+        dest: /usr/local/bin/docker-compose
+        mode: 'a+x'
+
+    - name: Fetch latest changes from Web-CountVisitors repository
+      git:
+        repo: "https://github.com/Saadovich/Web-CountVistors.git"
+        dest: "/home/ec2-user/Web-CountVistors"
+        version: master
+        update: yes
+
+    - name: Change directory to Web-CountVistors
+      become_user: "{{ ansible_user }}"
+      shell: cd /home/ec2-user/Web-CountVistors
+
+    - name: Run Docker Compose
+      become_user: "{{ ansible_user }}"
+      command: docker-compose -f /home/ec2-user/Web-CountVistors/docker-compose.yml up --build -d
