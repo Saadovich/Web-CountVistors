@@ -1,0 +1,7 @@
+all:
+  hosts:
+    myserver:
+      ansible_host: 18.117.165.172
+  vars:
+    ansible_user: ec2-user
+    ansible_ssh_private_key_file: C:\\Users\\Master\\.ssh\\id_rsa.pub

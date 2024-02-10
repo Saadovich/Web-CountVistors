@@ -1,0 +1,41 @@
+- name: Update apt repository and cache
+  package:
+    update_cache: yes
+
+#- name: Install  Docker
+#  package:
+#    name: docker.io
+#    state: latest
+#  when: ansible_distribution == "Ubuntu"
+
+- name: Add Docker's official repo
+  yum_repository:
+    name: Docker-ce-stable
+    description: Docker Stable repo
+    baseurl: <https://download.docker.com/linux/centos/7/x86_64/stable>
+    gpgcheck: yes
+    enabled: yes
+
+- name: Install Docker CE
+  yum:
+    name: docker-ce
+    state: present
+    update_cache: yes
+
+- name: Start Docker service
+  systemd:
+    name: docker
+    state: started
+    enabled: yes
+
+- name: Run Docker as a non-root user
+  user:
+    name: "{{ ansible_user }}"
+    append: yes
+    groups: docker
+
+- name: Download Docker Compose
+  get_url:
+    url: "<https://github.com/docker/compose/releases/download/1.29.2/docker-compose-Linux-x86_64>"
+    dest: /usr/local/bin/docker-compose
+    mode: '0755'

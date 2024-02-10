@@ -1,0 +1,9 @@
+aws_region          = "us-east-2"
+instance_type       = "t2.micro"
+vpc_cidr_block      = "10.0.0.0/16"
+subnet_cidr_block   = "10.0.0.0/24"
+availability_zone   = "us-east-2a"  # Adjust to a valid AZ in your region
+env_prefix          = "DOS-lab2"
+public_key_path     = "C:\\Users\\Master\\.ssh\\id_rsa.pub"
+myip_address        = "0.0.0.0/0"
+#myip_address        = "your_public_ip/32"  # Replace with your actual public IP CIDR

@@ -1,0 +1,15 @@
+- name: Remove previous repository if it exists
+  file:
+    path: /home/ec2-user/Web-CountVistors
+    state: absent
+
+- name: Clone Git Repository
+  git:
+    repo: https://github.com/Saadovich/Web-CountVistors.git
+    dest: /home/ec2-user/Web-CountVistors
+    clone: yes
+    update: yes
+
+- name: Build and Run app using Docker Compose
+  docker_compose:
+    project_src: /home/ec2-user/Web-CountVistors

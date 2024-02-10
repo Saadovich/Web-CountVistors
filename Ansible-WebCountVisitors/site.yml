@@ -1,0 +1,9 @@
+---
+- name: Deploy Git, Docker, and Docker Compose
+  hosts: myserver
+  become: yes
+  roles:
+    - common
+    - pip
+    - docker.io
+    - webapp
